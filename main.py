@@ -110,10 +110,11 @@ class MainHandler(BaseHandler):
         tosort.sort()
         tosort.reverse()
         posts = [p for _, _, p in tosort]
-        memcache.set('posts-ranked', posts)
+        memcache.set('posts-ranked', posts, 600)
     for post in posts:
       post.nickname = post.user.nickname()
       post.id = post.key().id()
+      
     self.render('index.html', {
       'posts': posts
     })
