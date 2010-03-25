@@ -71,8 +71,9 @@ def requirelogin(fn):
 
 def rank(model):
   delta = datetime.now() - model.date
-  hours = (delta.days * 24) + (delta.seconds * 3600)
-  return (model.points - 1) / ((hours + 2) ** 1.5)
+  hours = (delta.days * 24) + (delta.seconds / 3600)
+  rank = (model.points - 1) / ((hours + 2) ** 1.5)
+  return rank
   
 class BaseHandler(webapp.RequestHandler):
   def render(self, html, args):

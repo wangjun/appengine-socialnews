@@ -4,7 +4,6 @@
         {% for post in posts %}
         <tr>
             <td class="post-count">{{ forloop.counter }}.</td>
-            <!-- POST RANK {{ post.rank }} -->
             {% if user %}
                 {% ifequal user post.nickname %}
                 <td class="post-vote post-star">&#9733;</td>
